@@ -1,14 +1,16 @@
 # vue-demo
-仅仅作为vue的练手项目，请勿用于商业活动，否则后果自负
+## 页面适配使用了vw + rem的形式进行布局
+### 仅仅作为vue的练手
 
 > <h3>vue-cli 2.x + vue 2.x</h3>
 > 另外用到了以下插件<br>
 > ① axios：ajax请求方案<Br>
-> ② mockjs：生成随机数据，拦截ajax请求，可作为后端api接口模拟插件<Br>
+> ② mockjs：生成随机数据，拦截ajax请求，可作为后端api接口模拟的插件<Br>
 > ③ vue-awesome-swiper：轮播插件<Br>
-> ④ http-proxy-middleware：代理插件，解决跨域问题<Br>
+> ④ http-proxy-middleware：dev代理插件，解决跨域问题(生产环境不适用。工程打包后，nginx反向代理即可)<Br>
 > ⑤ vue-lazyload：图片懒加载插件<Br>
 > ⑥ vue-cookies： 封装cookie操作的插件
+
 
 ## Build Setup
 
@@ -36,10 +38,28 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ```
 
-## 使用了vue-cli脚手架搭建的demo
-部署到web应用服务器步骤，这里以tomcat为例：
-1、修改 工程目录/config/index.js 中 assetsPublicPath 的值共有两处，将 '/' 统一修改为  './'，否则页面路径会出错，一片空白
-2、运行 npm run build 命令将工程打包，输出到dist目录下，复制dist目录下的所有文件夹和文件
-3、在tomcat根目录/webapps/ 创建目录，如vue-demo，将复制的文件夹与文件放在刚创建的vue-demo目录下
-4、运行tomcat ，tomcat根目录/bin/startup.bat
+## nginx映射
+生产环境上的跨域请求无法使用http-proxy-middleware本地代理，则可以使用nginx的反向代理功能，解决这个问题<Br>
+后端配置例子
+``` bash
+修改nginx.conf，添加以下内容
+
+    location / {
+      root   xxxxx/dist;                // 此处是工程打包后的路径，如c:/project/dist
+      index  index.html index.htm;
+      try_files $uri $uri/ /index.html; // 解决路由history模式下，刷新就白屏的问题
+    }
+    location /users {    // 需跨域调用的接口path，代码中/users/xxxx，访问如https://api.github.com/users/xxxx，实现跨域
+      add_header 'Access-Control-Allow-Origin' '*';
+      proxy_pass https://api.github.com;
+    }
+    location /v1 {       // 同上
+      add_header 'Access-Control-Allow-Origin' '*';
+      proxy_pass https://suggest-follow-api-ms.juejin.im;
+    }
+```
+<h3>特别需要注意的是，当路由模式是history时，还需特别的配置，详情点击</h3>
+<a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html">HTML5 History 模式</a>
+
+<h3>页面展示</h3>
 

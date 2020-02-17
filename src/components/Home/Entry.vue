@@ -15,10 +15,10 @@
 <script>
 
   var dataList = [
-    {url: "http://www.baidu.com", "imgUrl": "/static/images/entry01@3x.webp", text: "热销专区"},
-    {url: "http://www.baidu.com", "imgUrl": "/static/images/entry02@3x.webp", text: "限时抢购"},
-    {url: "http://www.baidu.com", "imgUrl": "/static/images/entry03@3x.webp", text: "分类管理"},
-    {url: "http://www.baidu.com", "imgUrl": "/static/images/entry04@3x.webp", text: "礼品中心"}
+    {url: "http://www.baidu.com", "imgUrl": "./static/images/entry01@3x.webp", text: "热销专区"},
+    {url: "http://www.baidu.com", "imgUrl": "./static/images/entry02@3x.webp", text: "限时抢购"},
+    {url: "http://www.baidu.com", "imgUrl": "./static/images/entry03@3x.webp", text: "分类管理"},
+    {url: "http://www.baidu.com", "imgUrl": "./static/images/entry04@3x.webp", text: "礼品中心"}
   ]
 
   export default {

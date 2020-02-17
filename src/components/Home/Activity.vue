@@ -132,7 +132,7 @@
       background-size: contain;
     }
     &.icon-2 {
-      background: url("../../assets/images/@3x/activity-back02@3x.png") no-repeat;
+      background: url("../../assets/images/@3x/activity-back03@3x.png") no-repeat;
       background-size: contain;
     }
     &.icon-3 {

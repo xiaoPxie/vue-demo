@@ -17,17 +17,16 @@ import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   // error: 'dist/error.png',
-  loading: '/static/images/loading.gif',
+  loading: './static/images/loading.gif',
   attempt: 1
 })
 //cookie插件
 import VueCookies from 'vue-cookies'
 Vue.use(VueCookies)
 
-// 解决跨域
-// 设置baseUrl
+// axios插件
 import axios from 'axios'
-axios.defaults.baseURL = '/api'  //关键代码
+// axios.defaults.baseURL = '/api'
 
 //
 Vue.config.productionTip = false

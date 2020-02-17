@@ -156,7 +156,7 @@ const router = new Router({
   //  mode取值说明：
   // （1）histroy：URL就像正常的 url，示例：http://localhost:8080/home
   // （2）hash：默认值，会多一个“#”，示例：http://localhost:8080/#/home
-  // mode: 'history', //mode模式
+  mode: 'history', //mode模式
 })
 
 // 全局路由拦截-进入页面前执行：最常用

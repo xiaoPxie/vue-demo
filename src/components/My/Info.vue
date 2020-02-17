@@ -48,6 +48,14 @@
           console.warn(error)
         })
       },
+      getCross() {
+        // axios的get请求有两种方式，一个是"api-url?key=value"形式，一个是api-url, "params {key:value,...}"
+        axios.get("/v1/getByTag?tag=%E5%89%8D%E7%AB%AF&src=web&t=1").then((res) => {
+          console.log(res)
+        }).catch((error) => {
+          console.warn(error)
+        })
+      },
       logOut() {
         // 注销后 清除session信息 ，并返回home
         // sessionStorage.removeItem('user');
@@ -56,6 +64,7 @@
       }
     },
     mounted() {
+      this.getCross();
       // let userObj = JSON.parse(sessionStorage.getItem("user"))
       let userObj = this.$cookies.get("user")
       console.log(userObj)
