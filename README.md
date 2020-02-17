@@ -63,3 +63,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 <h3>页面展示</h3>
 
+<img src="https://raw.githubusercontent.com/xiaopxie/vue-demo/master/static/images/img01.png" />
+<img src="https://raw.githubusercontent.com/xiaopxie/vue-demo/master/static/images/img02.png" />
+<img src="https://raw.githubusercontent.com/xiaopxie/vue-demo/master/static/images/img03.png" />
