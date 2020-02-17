@@ -79,6 +79,7 @@
   .banner-swiper {
     position: relative;
     width: 100%;
+    height: px2rem(320px);
     img {
       width: 100%;
       height: 100%;

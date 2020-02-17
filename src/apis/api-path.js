@@ -10,6 +10,9 @@ export default {
     getNewsBack: "/news/back",
     getNewsList: "/news/list",
     getDetailById: "/news/detail"
-  }
-  // ...
+  },
+  // user
+  user: {
+    login: "/user/login"
+  },
 }

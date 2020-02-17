@@ -11,4 +11,7 @@ import '@/mock/Home/home-mock.js'
 // news
 import '@/mock/News/news-mock.js'
 
+// user
+import '@/mock/User/user-mock.js'
+
 // ...

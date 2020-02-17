@@ -58,6 +58,7 @@
     background: #fff;
     box-shadow: 0 px2rem(2px) px2rem(10px) rgba(0, 0, 0, 0.3);
     z-index: 101;
+    transition: all 0.5s ease;
     & > .title {
       position: absolute;
       left: 50%;

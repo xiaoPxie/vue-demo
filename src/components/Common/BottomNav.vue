@@ -30,6 +30,7 @@
       // {"text": "商城"},
       // {"text": "购物车"},
       {"text": "我的", "url": "/my"},
+      // {"text": "登录", "url": "/login"},
     ]
   }
 
@@ -43,35 +44,35 @@
     },
     methods: {
       // 编程式路由
-      routerClick: function (index) {
-        switch (index) {
-          case 0:
-            this.$router.push({
-              name: '首页',
-              params: {}
-            })
-            break;
-          case 1:
-            this.$router.push({
-              name: '新闻',
-              params: {}
-            })
-            break;
-          case 2:
-            this.$router.push({
-              name: '我的',
-              params: {
-                id: 'xiaoPxie'
-              }
-            })
-            break;
-          default:
-            this.$router.push({
-              name: '首页',
-              params: {}
-            })
-        }
-      } // end functions
+      // routerClick: function (index) {
+      //   switch (index) {
+      //     case 0:
+      //       this.$router.push({
+      //         name: '首页',
+      //         params: {}
+      //       })
+      //       break;
+      //     case 1:
+      //       this.$router.push({
+      //         name: '新闻',
+      //         params: {}
+      //       })
+      //       break;
+      //     case 2:
+      //       this.$router.push({
+      //         name: '我的',
+      //         params: {
+      //           id: 'xiaoPxie'
+      //         }
+      //       })
+      //       break;
+      //     default:
+      //       this.$router.push({
+      //         name: '首页',
+      //         params: {}
+      //       })
+      //   }
+      // } // end functions
 
     }, // end methods
     mounted(){

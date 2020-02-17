@@ -1,7 +1,7 @@
 <template>
   <section class="my">
     <transition :name="transitionName">
-      <keep-alive>
+      <keep-alive exclude="service">
         <router-view class="child-view"></router-view>
       </keep-alive>
     </transition>

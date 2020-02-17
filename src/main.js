@@ -12,6 +12,17 @@ import '@/filter/filter.js'
 // 引入swiper轮播插件
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
+// 懒加载插件
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  // error: 'dist/error.png',
+  loading: '/static/images/loading.gif',
+  attempt: 1
+})
+//cookie插件
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
 
 // 解决跨域
 // 设置baseUrl

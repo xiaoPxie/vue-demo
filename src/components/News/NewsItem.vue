@@ -5,7 +5,7 @@
       <p class="time text-nowrap">发表时间： {{newsInfo.date}}</p>
     </div>
     <div class="warp-r">
-      <img :src="newsInfo.imgUrl" alt="">
+      <img v-lazy="newsInfo.imgUrl" alt="">
     </div>
   </section>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <section class="news-panel">
+  <section class="news">
     <transition :name="transitionName">
       <keep-alive exclude="news-detail">
         <router-view class="news-child-view"></router-view>

@@ -1,18 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from "../components/Home/Home";
-import BottomNav from "../components/Common/BottomNav";
+// import BottomNav from "../components/Common/BottomNav";
 
 Vue.use(Router)
 
 // 新闻
 const News = ()=>import("../components/News/News")
-const NewsList = () => import("../components/News/NewsList")
+const NewsPanel = () => import("../components/News/NewsPanel")
 const NewsDetail = ()=>import("../components/News/NewsDetail")
+const NewsRecommendList = ()=>import("../components/News/NewsRecommendList")
+const NewsCurrentList = ()=>import("../components/News/NewsCurrentList")
 // 我的
 const My = ()=>import("../components/My/My")
 const sla = ()=>import("../components/My/SLA")
 const Info = ()=>import("../components/My/Info")
+const Login = ()=>import("../components/User/Login")
 
 const routes = [
   {
@@ -20,8 +23,17 @@ const routes = [
     redirect: '/home'
   },
   {
+    path: '/login',
+    name: 'login',
+    component: Login,
+    meta: {
+      index: 1,
+      keepAlive: false, //缓存页面，不刷新
+    }
+  },
+  {
     path: '/home',
-    name: '首页',
+    name: 'home',
     component: Home,
     meta: {
       index: 1,
@@ -42,13 +54,37 @@ const routes = [
     children: [
       {
         path: 'list',
-        name: 'news-list',
-        component: NewsList,
+        // name: 'news-panel',
+        component: NewsPanel,
         meta: {
           index: 2,
-          isBack: false,
-          isFirstRender: true
+          // isBack: false,
+          // isFirstRender: true
         },
+        children: [
+          {
+            path: '/news/list/recommend',
+            name: 'news-recommend',
+            component: NewsRecommendList,
+            meta: {
+              index: 2,
+              isFirstRender: true
+            }
+          },
+          {
+            path: '/news/list/current',
+            name: 'news-current',
+            component: NewsCurrentList,
+            meta: {
+              index: 2,
+              isFirstRender: true
+            }
+          },
+          {
+            path: '/',     //
+            redirect: '/news/list/recommend'
+          },
+        ]
       },
       {
         path: '/news/detail/:id',
@@ -68,6 +104,7 @@ const routes = [
   {
     path: '/my',
     component: My,
+    // component: Login,
     meta: {
       index: 1,
       isBack: false,
@@ -76,7 +113,7 @@ const routes = [
     children: [
       {
         path:'info',
-        name: '我的-信息',
+        name: 'user',
         component: Info,
         meta: {
           index: 2,
@@ -85,7 +122,7 @@ const routes = [
       },
       {
         path:'sla',
-        name: '我的-服务协议',
+        name: 'service',
         component: sla,
         meta: {
           index: 3,
@@ -107,13 +144,15 @@ const routes = [
 const router = new Router({
   // 路由配置
   routes: routes,
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { x: 0, y: 0 }
-    }
-  },
+  // 记录滚动条的位置
+  // scrollBehavior (to, from, savedPosition) {
+  //   if (savedPosition) {
+  //     return savedPosition
+  //   }
+  //   else {
+  //     return { x: 0, y: 0 }
+  //   }
+  // },
   //  mode取值说明：
   // （1）histroy：URL就像正常的 url，示例：http://localhost:8080/home
   // （2）hash：默认值，会多一个“#”，示例：http://localhost:8080/#/home
@@ -123,7 +162,6 @@ const router = new Router({
 // 全局路由拦截-进入页面前执行：最常用
 router.beforeEach((to, from, next) => {
   // 这里可以加入全局登陆判断
-  // 继续执行
 
   // 参数说明：
   // to: Route : 即将要进入的目标 [路由对象]
@@ -137,12 +175,25 @@ router.beforeEach((to, from, next) => {
   console.log(to)
   console.log(from)
   console.groupEnd();
-  // 在index >= 3的页面里，则隐藏导航条
-  if(to.meta.index >= 3 && from.path !== '/'){
-    let commonNavEl = document.getElementById("common-nav");
-    commonNavEl.style.bottom = '-100%'
+  // 登录判断
+  // 我的
+  // let userObj = sessionStorage.getItem("user")
+  let userObj = Vue.$cookies.get("user");
+  if(to.path.indexOf('/my') !== -1 && userObj == null) {
+    next({path: '/login'})
+  }else if(to.path.indexOf('/my') !== -1 && userObj != null){
+    // 在登录页中，若session不为空，跳转到home
+    next()
+  }else{
+    // 在index >= 3的页面里，则隐藏导航条
+    if(to.meta.index >= 3 && from.path !== '/'){
+      let commonNavEl = document.getElementById("common-nav");
+      commonNavEl.style.bottom = '-100%'
+    }
+    next();
   }
-  next();
+  //
+  // next();
 });
 
 // 全局后置钩子-常用于结束动画等

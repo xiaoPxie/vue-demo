@@ -4,9 +4,11 @@
 > <h3>vue-cli 2.x + vue 2.x</h3>
 > 另外用到了以下插件<br>
 > ① axios：ajax请求方案<Br>
-> ② mackjs：生成随机数据，拦截ajax请求，可作为后端api接口模拟插件<Br>
+> ② mockjs：生成随机数据，拦截ajax请求，可作为后端api接口模拟插件<Br>
 > ③ vue-awesome-swiper：轮播插件<Br>
-> ④ http-proxy-middleware：前端代理插件，解决跨越问题。不使用jsonp的方案，因为只能是get请求
+> ④ http-proxy-middleware：代理插件，解决跨域问题<Br>
+> ⑤ vue-lazyload：图片懒加载插件<Br>
+> ⑥ vue-cookies： 封装cookie操作的插件
 
 ## Build Setup
 

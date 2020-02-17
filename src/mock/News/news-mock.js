@@ -20,7 +20,7 @@ let produceNewsData = function(param) {
   console.log(param)
   console.groupEnd();
   let newsInfoList = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 50; i++) {
     let newsInfoObj = {
       id: Random.integer(10000),
       title: Random.csentence(20, 50), //  Random.csentence( min, max )
@@ -44,7 +44,7 @@ let produceNewsDetail = function(param) {
   console.log("response data：")
   console.log(param)
   let newsDetailObj = {}
-  newsDetailObj.detail = Random.csentence(1000, 3000)
+  newsDetailObj.detail = Random.csentence(1000, 2000)
   console.log(newsDetailObj)
   console.groupEnd()
   return newsDetailObj;

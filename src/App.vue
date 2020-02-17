@@ -7,7 +7,7 @@
 <!--&lt;!&ndash;      <keep-alive>&ndash;&gt;-->
 <!--&lt;!&ndash;          <router-view v-if="$route.meta.keepAlive"></router-view>&ndash;&gt;-->
 <!--&lt;!&ndash;      </keep-alive>&ndash;&gt;-->
-      <keep-alive>
+      <keep-alive max="2">
         <router-view />
       </keep-alive>
 <!--      <router-view name="bottom" />-->
@@ -37,10 +37,6 @@
 <style lang="scss">
   @import "assets/css/common/util.scss";
   @include root-font-size();
-
-  #app {
-    padding-bottom: px2rem(96px);
-  }
 
   /*页面切换动画*/
   /*!*进入过渡的结束状态，元素被插入时就生效，在过渡过程完成后移除*!*/

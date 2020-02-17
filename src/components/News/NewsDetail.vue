@@ -42,6 +42,15 @@
       }
     },
     mounted() {
+      // index.js不设置scrollBehavior时，这里的滚动条会异常，所以要重置滚动条
+      if(document.documentElement.scrollTop)
+        setTimeout(()=>{
+          document.documentElement.scrollTop = 0
+        },500)
+      else
+        setTimeout(()=>{
+          document.body.scrollTop = 0
+        },500)
       this.getDetailById(this.id);
     },
   }
