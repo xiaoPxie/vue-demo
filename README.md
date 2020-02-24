@@ -11,7 +11,12 @@
 > ⑤ vue-lazyload：图片懒加载插件<Br>
 > ⑥ vue-cookies： 封装cookie操作的插件
 
-
+### demo中数据使用mockjs插件进行模拟，该插件github <a href="https://github.com/nuysoft/Mock/wiki">wiki文档</a>
+``` bash
+请使用以下账号登录体验：
+    账号：jk
+    密码：root
+```
 ## Build Setup
 
 ``` bash
